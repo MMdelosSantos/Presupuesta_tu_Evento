@@ -1,38 +1,44 @@
-export function esFecha( cadena )
-{
-    if( (trim(cadena) == "") || (trim(cadena).length != 10) )
+// Función que valida si la fecha ingresada por el usuario es una fecha válida.
+// PENDIENTE VALIDAR QUE NO SEA FECHA DEL PASADO , EN PRÓXIMA VERSIÓN.
+let fechaActual = new Date()
+let diaActual = fechaActual.getDay()
+let mesActual = fechaActual.getMonth()
+let anioActual = fechaActual.getFullYear()
+
+export function esFecha(fechaCadena) {
+    if ((trim(fechaCadena) == "") || (trim(fechaCadena).length != 10))
         return false;
-    var dia  = parseInt(cadena.substr(0,2), 10);
-    var mes  = parseInt(cadena.substr(3,2), 10);
-    var anio = parseInt(cadena.substr(6,4), 10);
-    // Año
-    if( isNaN(anio) || (anio < 1900) )
+    let diaEvento = parseInt(fechaCadena.substr(0, 2), 10);
+    let mesEvento = parseInt(fechaCadena.substr(3, 2), 10);
+    let anioEvento = parseInt(fechaCadena.substr(6, 4), 10);
+    // Validando Año  para asegurarnos de que no es un valor vacío ni pasado
+    if (isNaN(anioEvento) || (anioEvento < anioActual))
         return false;
-    // Mes
-    if( isNaN(mes) || (mes < 1) || (mes > 12) )
+    // Validando Mes
+    if (isNaN(mesEvento) || (mesEvento < 1) || (mesEvento > 12))
         return false;
-    // Día
-    if( isNaN(dia) || (dia < 1) || (dia > 31) )
+    // Validando Día   para asegurarnos de que  es una fecha correcta.
+    if (isNaN(diaEvento) || (diaEvento < 1) || (diaEvento > 31))
         return false;
+    if ((diaEvento == 31) && ((mesEvento == 4) || (mesEvento == 6) || (mesEvento == 9) || (mesEvento == 11)))
+        return false;
+    let diaMax = 31;
+    if ((anioEvento % 4 == 0) && (anioEvento % 100 != 0) || (anioEvento % 400 == 0))
+        diaMax = 29;
     else
-    {
-        if( (dia == 31) && ((mes == 4 ) || (mes == 6) || (mes == 9) || (mes == 11)) )
-            return false;
-        var diaMax = 31;
-        if( (anio % 4 == 0) && (anio % 100 != 0) || (anio % 400 == 0) )
-            diaMax = 29;
-        else
-            diaMax = 28;
-        if( dia > diaMax )
-            return false;
+        diaMax = 28;
+    if (diaEvento > diaMax)
+        return false;
+    else {
+        return true;
     }
-    return true;
 }
+;
+
 // -----------------------
 // Elimina espacios al principio y fin de la cadena
-function trim( cadena )
-{
-    cadena += "";
-    cadena = cadena.replace(/^\s+/, '');
-    return cadena.replace(/\s+$/, '');
+function trim(fechaCadena) {
+    fechaCadena += "";
+    fechaCadena = fechaCadena.replace(/^\s+/, '');
+    return fechaCadena.replace(/\s+$/, '');
 }
