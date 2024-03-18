@@ -1,6 +1,7 @@
 // Importamos la función que valida si la fecha ingresada por un usuario es válida
+import { esSioNo } from "./validarSioNo.js"
 import { esFecha } from "./verificarFecha.js"
-
+import {esGeneroValido} from "./validaGenero.js"
 
 function main() {
     // Declaro variables principales
@@ -11,6 +12,8 @@ function main() {
     let generoInvitado
     let mailContacto
     let fechaActual = new Date()
+    let alquilaLocal
+    let ingresarOtroInvitado
 
     //Sobre cantidad de invitados:
     let cantidadInvitadosTotal
@@ -35,7 +38,7 @@ function main() {
     // Defino diccionario con los datos de los invitados
     let invitados = []
 
-    let organizaEvento = confirm('¡Hola! ¿Deseas conocer el presupuesto aprox que necesitarás para tu evento?')
+    let organizaEvento = confirm('¡Hola! ¿Deseas conocer el presupuesto aproximado que necesitarás para tu evento?')
     // El usuario ingresa fecha del evento y su nombre.
     nombreOrganizador = prompt("Por favor escribe tu nombre") // Ver de que en el html quede escrito el nombre ingresado en la bienvenida.
 
@@ -45,21 +48,32 @@ function main() {
         // Informamos al usuario si ha ingresado una fecha invalida.
         if (!esFecha(fechaEvento))
             alert("La fecha ingresada no es correcta")
-
     } while (!esFecha(fechaEvento))
 
-    // El usuario define si el evento será en un local o en su propia casa.
-    let alquilaLocal = prompt('¿Deseas alquilar un local para tu evento? Responda SI o NO. El costo del alquiler será de $ 2.500')
+    // El usuario define si el evento será en un local o en su propia casa.  
+    do {
+        alquilaLocal = prompt('¿Deseas alquilar un local para tu evento? Responda SI o NO. El costo del alquiler será de $ 2.500').toUpperCase()
+        if (!esSioNo(alquilaLocal))
+            alert("La respuesta no es correcta, por favor responda SI o NO.")
+    } while (!esSioNo(alquilaLocal))
 
     // El usuario comienza a ingresar los datos de sus invitados, lo que definirá parte del presupuesto.
-    let ingresarOtroInvitado
+
     do {
         nombreInvitado = prompt('Ingresa el nombre de tu invitado')
-        esVegetariano = prompt('¿El invitado es vegetariano? Responda SI o NO')
-        generoInvitado = prompt('Ingresa el genero de tu invitado. Responda M para masculino, F para femenino y X para otros').toUpperCase()
+        do {
+            esVegetariano = prompt('¿El invitado es vegetariano? Responda SI o NO').toUpperCase()
+            if (!esSioNo(esVegetariano))
+                alert("La respuesta no es correcta, por favor responda SI o NO.")
+        } while (!esSioNo(esVegetariano))
+        do {
+            generoInvitado = prompt('Ingresa el genero de tu invitado. Responda M para masculino, F para femenino y X para otros').toUpperCase()
+            if (!esGeneroValido(generoInvitado))
+                alert("La respuesta no es correcta, por favor responda M para masculino , F para femenino o X para otros.")
+        } while (!esGeneroValido(generoInvitado))
         mailContacto = prompt('Ingresa el mail de contacto de tu invitado')
         invitados.push({ nombre: nombreInvitado, esvegetariano: esVegetariano, genero: generoInvitado, contacto: mailContacto })
-        ingresarOtroInvitado = prompt('¿Desea ingresar a otro invitado? Responda SI o NO')
+        ingresarOtroInvitado = prompt('¿Desea ingresar a otro invitado? Responda SI o NO').toUpperCase()
     } while (ingresarOtroInvitado == 'SI')
 
     // Cálculos de la cantidad de invitados
@@ -90,7 +104,6 @@ function main() {
             cantidadGenOtros++
     }
 
-
     // Asigno valores a algunos costos que son fijos:
     const costoAlquiler = 2500 // Si se alquila un local para el evento, se incrementa el costo del evento en $2.500.
     souvenirHombre = 120
@@ -106,7 +119,7 @@ function main() {
     costoSouvenirGenOtros = cantidadGenOtros * souvenirOtros
     totalCosto = costoComidaInvNoVeg + costoComidaInvVeg + costoAlquiler + costoSouvenirGenHombre + costoSouvenirGenMujer + costoSouvenirGenOtros
 
-    alert('Tienes un total de ' + cantidadInvitadosTotal + ' invitados, de los cuales ' + cantidadInvitadosVeg + ' es/son vegetariano/s')
+    alert('Tienes un total de ' + cantidadInvitadosTotal + ' invitado/s, de los cuales ' + cantidadInvitadosVeg + ' es/son vegetariano/s')
     alert('Del total de invitados, hay ' + cantidadGenMujer + ' que es/son mujer/es, ' + cantidadGenHombre + ' que es/son hombre/s y ' + cantidadGenOtros + ' es/son de otro género')
     alert('El costo total de tu evento, considerando estos invitados y el alquiler del local de $' + costoAlquiler + ' es de: $' + totalCosto)
 
