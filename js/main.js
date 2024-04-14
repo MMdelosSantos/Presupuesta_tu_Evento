@@ -1,4 +1,4 @@
-// Importamos la función que valida si la fecha ingresada por un usuario es válida
+// Importamos las funciones de validación
 import { esSioNo } from "./validarSioNo.js"
 import { esFecha } from "./verificarFecha.js"
 import {esGeneroValido} from "./validaGenero.js"
