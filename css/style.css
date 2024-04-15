@@ -12,7 +12,7 @@
     justify-content: space-evenly;
 }
 
-.Txt-Home {
+.Txt-home {
    color: #fff; 
    text-align: center;
    width: 100%;
@@ -34,7 +34,6 @@
 
 .btn {
     margin: 3%;
-    border: 5%;
 }
 
 .btn-outline-light {
