@@ -124,7 +124,6 @@ function main() {
     alert('El costo total de tu evento, considerando estos invitados y el alquiler del local de $' + costoAlquiler + ' es de: $' + totalCosto)
 
     // En la versión final de la aplicación quiero: 
-    // contar la cantidad de invitados y que figure en algún lado. Separar cuantos son vegetarianos y cuantos hombres
     // Que me calcule los días que faltan para el evento
     // Tener conceptos como comida, salón, cotillon, bebidas, torta. Debe multiplicar por cantidad de invitados y considerar otro presupuesto segun si son vegetarianos.
     // Permitir guardar distintas versiones del presupuesto y luego revisarlas.
