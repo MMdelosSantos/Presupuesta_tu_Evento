@@ -41,21 +41,80 @@ function calculo() {   // Declaro variables principales
     costoSouvenirGenMujer = cantidadGenMujer * souvenirMujer
     costoSouvenirGenHombre = cantidadGenHombre * souvenirHombre
     costoSouvenirGenOtros = cantidadGenOtros * souvenirOtros
-    totalCosto = costoComidaInvNoVeg + costoComidaInvVeg  + costoSouvenirGenHombre + costoSouvenirGenMujer + costoSouvenirGenOtros
+    totalCosto = costoComidaInvNoVeg + costoComidaInvVeg + costoSouvenirGenHombre + costoSouvenirGenMujer + costoSouvenirGenOtros
 
-    if(alquilaLocal){
+    if (alquilaLocal) {
         totalCosto += costoAlquiler
         console.log(alquilaLocal)
     }
 
     // Mostrar los resultados obtenidos
-    document.getElementById('resultados').innerHTML = "Tienes una cantidad total de : " + cantidadInvitadosTotal +' invitado/s, de los cuales ' + cantidadInvitadosVeg + ' es/son vegetariano/s <br> Del total de invitados, hay ' + cantidadGenMujer + ' que es/son mujer/es, ' + cantidadGenHombre + ' que es/son hombre/s y ' + cantidadGenOtros + ' es/son de otro género.<br> El costo total de tu evento, considerando estos invitados y el alquiler del local de $' + costoAlquiler + ' es de: $' + totalCosto
+    document.getElementById('resultados').innerHTML = "Tienes una cantidad total de : " + cantidadInvitadosTotal + ' invitado/s, de los cuales ' + cantidadInvitadosVeg + ' es/son vegetariano/s <br> Del total de invitados, hay ' + cantidadGenMujer + ' que es/son mujer/es, ' + cantidadGenHombre + ' que es/son hombre/s y ' + cantidadGenOtros + ' es/son de otro género.<br> El costo total de tu evento, considerando estos invitados y el alquiler del local de $' + costoAlquiler + ' es de: $' + totalCosto
+
+    let nuevaVersionPpto = new Presupuestos();
+
+    nuevaVersionPpto.cantidadInvitadosTotal = `${cantidadInvitadosTotal}`;
+    nuevaVersionPpto.cantidadInvitadosVeg = `${cantidadInvitadosVeg}`;
+    nuevaVersionPpto.cantidadInvitadosNoVeg = `${cantidadInvitadosNoVeg}`;
+    nuevaVersionPpto.cantidadGenMujer = `${cantidadGenMujer}`;
+    nuevaVersionPpto.cantidadGenHombre = `${cantidadGenHombre}`;
+    nuevaVersionPpto.cantidadGenOtros = `${cantidadGenOtros}`;
+    nuevaVersionPpto.costoAlquiler = `${costoAlquiler}`;
+    nuevaVersionPpto.totalCosto = `${totalCosto}`;
+    sessionStorage.setItem('VersionPresupuesto', JSON.stringify(nuevaVersionPpto))
 
     return false;
 }
 
+// Versiones de presupuestos guardados:
 
-// En la versión final de la aplicación quiero:
-// Que me calcule los días que faltan para el evento
-// Tener conceptos como comida, salón, cotillon, bebidas, torta. Debe multiplicar por cantidad de invitados y considerar otro presupuesto segun si son vegetarianos.
-// Permitir guardar distintas versiones del presupuesto y luego revisarlas.
+
+class Presupuestos {
+    static VersionPpto = 1;
+    constructor() {
+        this.numero = Presupuestos.VersionPpto++;
+        this.cantidadInvitadosTotal;
+        this.cantidadInvitadosVeg;
+        this.cantidadInvitadosNoVeg;
+        this.cantidadGenMujer;
+        this.cantidadGenHombre;
+        this.cantidadGenOtros;
+        this.costoAlquiler;
+        this.totalCosto;
+    }
+}
+
+function guardarPpto() {
+    let VersionesPpto = JSON.parse(localStorage.getItem('VersionesPpto'))
+
+    let nuevaVersionPpto = sessionStorage.getItem('VersionPresupuesto')
+    console.log(nuevaVersionPpto)
+    if (VersionesPpto === null) {
+        VersionesPpto = []
+        VersionesPpto.push(nuevaVersionPpto);
+        console.log(VersionesPpto)
+    }
+    else {
+        VersionesPpto.push(nuevaVersionPpto);
+    }
+    localStorage.setItem('VersionesPpto', VersionesPpto);
+}
+
+
+function recuperarLocalStorage() {
+    let VersionesLocalStorage = localStorage.getItem('VersionesPpto')
+    console.log(VersionesLocalStorage)
+    VersionesLocalStorage.forEach(version => {
+        console.log(`Cantidad total de invitados: ${version["cantidadInvitadosTotal"]}
+    Invitados Vegetarianos: ${version['cantidadInvitadosVeg']} 
+    Invitados no vegetarianos  ${version['cantidadInvitadosNoVeg']} 
+    Invitados de género femenino: ${version['cantidadGenMujer']} 
+    Invitados de género masculino: ${version['cantidadGenHombre']} 
+    Invitados de otro género: ${version['cantidadGenOtros']} 
+    Costo de alquiler: ${version['cantidadGenOtros']} 
+    Total costo: ${version['totalCosto']}`);
+
+    });
+
+}
+
