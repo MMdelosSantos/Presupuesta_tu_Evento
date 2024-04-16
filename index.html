@@ -37,9 +37,9 @@
           </div>
           <div><a href="#Presupuestos-guardados" class="btn btn-outline-light">Ver presupuestos guardados</a>
           </div>
-          <div><a href="#Compara-presupuestos" class="btn btn-outline-light">Comparar presupuestos guardados</a>
-          </div>
+          <!--<div><a href="#Compara-presupuestos" class="btn btn-outline-light">Comparar presupuestos guardados</a> Para próxima entrega deseo hacer comparacion entre los pptos cargados-->
         </div>
+      </div>
       </div>
     </section>
     <section id="Calculadora">
@@ -95,19 +95,19 @@
               </div>
             </div>
             <button type="submit" class="btn btn-primary">Confirmar</button>
+            <button onclick="guardarPpto()" class="btn btn-primary">Guardar Presupuesto</button>
         </form>
         <div id="resultados">
-
         </div>
       </div>
 
     </section>
     <section id="Presupuestos-guardados">
-
+      <button onclick="recuperarLocalStorage()" class="btn btn-primary">Ver presupuestos guardados</button>
     </section>
-    <section id="Compara-presupuestos">
+  <!--   <section id="Compara-presupuestos">
 
-    </section>
+    </section> -->
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
