@@ -37,7 +37,6 @@
           </div>
           <div><a href="#Presupuestos-guardados" class="btn btn-outline-light">Ver presupuestos guardados</a>
           </div>
-          <!--<div><a href="#Compara-presupuestos" class="btn btn-outline-light">Comparar presupuestos guardados</a> Para próxima entrega deseo hacer comparacion entre los pptos cargados-->
         </div>
       </div>
       </div>
@@ -62,27 +61,27 @@
                 placeholder="Fecha del evento en formato dd/mm/yyyy">
             </div>
             <div class="form-group">
-              <label for="inputVeg">Indica la Cantidad de invitados vegetarianos</label>
+              <label for="inputVeg">Indica la Cantidad de invitados vegetarianos. El costo en comida para un invitado vegetariano es $ 520. </label>
               <input type="text" class="form-control" id="cantidadInvitadosVeg"
                 placeholder="Cantidad de invitados que son vegetarianos" value="0">
             </div>
             <div class="form-group">
-              <label for="inputNoVeg">Indica la Cantidad de invitados NO vegetarianos</label>
+              <label for="inputNoVeg">Indica la Cantidad de invitados NO vegetarianos. El costo en comida para un invitado No vegetariano es de $ 470.</label>
               <input type="text" class="form-control" id="cantidadInvitadosNoVeg"
                 placeholder="Cantidad de invitados que NO son vegetarianos" value="0">
             </div>
             <div class="form-group">
-              <label for="inputFem">Indica la Cantidad de invitados de género femenino</label>
+              <label for="inputFem">Indica la Cantidad de invitados de género femenino. Por cada invitado femenino se calcula un souvenir con un costo de $ 150.</label>
               <input type="text" class="form-control" id="cantidadGenMujer"
                 placeholder="Cantidad de invitados de género femenino" value="0">
             </div>
             <div class="form-group">
-              <label for="inputMasc">Indica la Cantidad de invitados de género masculino</label>
+              <label for="inputMasc">Indica la Cantidad de invitados de género masculino.  Por cada invitado masculino se calcula un souvenir con un costo de $ 120.</label>
               <input type="text" class="form-control" id="cantidadGenHombre"
                 placeholder="Cantidad de invitados de género masculino" value="0">
             </div>
             <div class="form-group">
-              <label for="inputOtro">Indica la Cantidad de invitados de otro género</label>
+              <label for="inputOtro">Indica la Cantidad de invitados de otro género. El costo en souvenirs para este caso es de $ 125.</label>
               <input type="text" class="form-control" id="cantidadGenOtros"
                 placeholder="Cantidad de invitados de otro género" value="0">
             </div>
@@ -94,15 +93,15 @@
                 </label>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Confirmar</button>
-            <button onclick="guardarPpto()" class="btn btn-primary">Guardar Presupuesto</button>
+            <button type="submit" class="btn-confirmar btn btn-primary">Confirmar</button>
+            <button onclick="guardarPresupuesto()" class="btn-guardar btn btn-primary">Guardar Presupuesto</button>
         </form>
-        <div id="resultados">
-        </div>
+      </div>
+      <div id="resultados">
       </div>
     </section>
     <section id="Presupuestos-guardados">
-      <button onclick="mostrarVersionesPpto()" class="btn btn-primary">Ver presupuestos guardados</button>
+      <button onclick="mostrarVersionesPresupuesto()" class="btn-mostrar btn btn-primary">Ver presupuestos guardados</button>
       <div id="div-versiones">
       </div>
     </section>
