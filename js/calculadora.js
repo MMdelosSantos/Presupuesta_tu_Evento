@@ -1,156 +1,188 @@
 
 function calculo() {   // Declaro variables principales
-    let nombreOrganizador = (document.getElementById('nombreOrganizador').value);
-    let mailOrganizador = (document.getElementById('mailOrganizador').value);
-    let fechaEvento = (document.getElementById('fechaEvento').value);
-    // Sobre invitados
-    let cantidadInvitadosVeg = parseInt(document.getElementById('cantidadInvitadosVeg').value);
-    let cantidadInvitadosNoVeg = parseInt(document.getElementById('cantidadInvitadosNoVeg').value);
-    let cantidadGenMujer = parseInt(document.getElementById('cantidadGenMujer').value);
-    let cantidadGenHombre = parseInt(document.getElementById('cantidadGenHombre').value);
-    let cantidadGenOtros = parseInt(document.getElementById('cantidadGenOtros').value);
-    let fechaActual = new Date()
-    let alquilaLocal = document.getElementById('alquilalocal').checked
-    let cantidadInvitadosTotal
-    // Sobre costos
-    let souvenirMujer // Costo unitario de los souvenirs para mujer
-    let souvenirHombre // Costo unitario de los souvenirs para hombre
-    let souvenirOtros // Costo unitario de los souvenirs para invitados de genero otros. 
-    let comidaVegetariana // Costo de almuerzo/cena para 1 persona vegetariana.
-    let comida // Costo de almuerzo/cena para 1 persona que no es vegetariana.
-    let costoComidaInvVeg // Según la cantidad de invitados vegetarianos, multiplica por el importe de su almuerzo/ cena (que es de  $ 520).
-    let costoComidaInvNoVeg // Según la cantidad de invitados que no son vegetarianos, multiplica por el importe de su almuerzo/cena (que es de $ 470).
-    let costoSouvenirGenMujer // Multiplica la cantidad de invitados que son mujer por el costo de su souvenirs.
-    let costoSouvenirGenHombre // Multiplica la cantidad de invitados hombre por el costo de sus souvenirs.
-    let costoSouvenirGenOtros // Multiplica la cantidad de invitados de genero Otros por el costo de sus souvenirs. 
-    let totalCosto // Suma todos los costos del evento. 
+  let nombreOrganizador = (document.getElementById('nombreOrganizador').value);
+  let mailOrganizador = (document.getElementById('mailOrganizador').value);
+  let fechaEvento = (document.getElementById('fechaEvento').value);
+  // Sobre invitados
+  let cantidadInvitadosVeg = parseInt(document.getElementById('cantidadInvitadosVeg').value);
+  let cantidadInvitadosNoVeg = parseInt(document.getElementById('cantidadInvitadosNoVeg').value);
+  let cantidadGenMujer = parseInt(document.getElementById('cantidadGenMujer').value);
+  let cantidadGenHombre = parseInt(document.getElementById('cantidadGenHombre').value);
+  let cantidadGenOtros = parseInt(document.getElementById('cantidadGenOtros').value);
+  let fechaActual = new Date()
+  let alquilaLocal = document.getElementById('alquilalocal').checked
+  let cantidadInvitadosTotal
+  // Sobre costos
+  let souvenirMujer // Costo unitario de los souvenirs para mujer
+  let souvenirHombre // Costo unitario de los souvenirs para hombre
+  let souvenirOtros // Costo unitario de los souvenirs para invitados de genero otros. 
+  let comidaVegetariana // Costo de almuerzo/cena para 1 persona vegetariana.
+  let comida // Costo de almuerzo/cena para 1 persona que no es vegetariana.
+  let costoComidaInvVeg // Según la cantidad de invitados vegetarianos, multiplica por el importe de su almuerzo/ cena (que es de  $ 520).
+  let costoComidaInvNoVeg // Según la cantidad de invitados que no son vegetarianos, multiplica por el importe de su almuerzo/cena (que es de $ 470).
+  let costoSouvenirGenMujer // Multiplica la cantidad de invitados que son mujer por el costo de su souvenirs.
+  let costoSouvenirGenHombre // Multiplica la cantidad de invitados hombre por el costo de sus souvenirs.
+  let costoSouvenirGenOtros // Multiplica la cantidad de invitados de genero Otros por el costo de sus souvenirs. 
+  let totalCosto // Suma todos los costos del evento. 
 
-    // Cálculos de la cantidad de invitados
-    cantidadInvitadosTotal = cantidadInvitadosNoVeg + cantidadInvitadosVeg
+  // Cálculos de la cantidad de invitados
+  cantidadInvitadosTotal = cantidadInvitadosNoVeg + cantidadInvitadosVeg
 
-    // Asigno valores a algunos costos que son fijos:
-    const costoAlquiler = 2500 // Si se alquila un local para el evento, se incrementa el costo del evento en $2.500.
-    souvenirHombre = 120
-    souvenirMujer = 150
-    souvenirOtros = 125
-    comidaVegetariana = 520
-    comida = 470
-    // Calculamos costos totales con operaciones
-    costoComidaInvVeg = cantidadInvitadosVeg * comidaVegetariana
-    costoComidaInvNoVeg = cantidadInvitadosNoVeg * comida
-    costoSouvenirGenMujer = cantidadGenMujer * souvenirMujer
-    costoSouvenirGenHombre = cantidadGenHombre * souvenirHombre
-    costoSouvenirGenOtros = cantidadGenOtros * souvenirOtros
-    totalCosto = costoComidaInvNoVeg + costoComidaInvVeg + costoSouvenirGenHombre + costoSouvenirGenMujer + costoSouvenirGenOtros
+  // Asigno valores a algunos costos que son fijos:
+  const costoAlquiler = 2500 // Si se alquila un local para el evento, se incrementa el costo del evento en $2.500.
+  souvenirHombre = 120
+  souvenirMujer = 150
+  souvenirOtros = 125
+  comidaVegetariana = 520
+  comida = 470
+  // Calculamos costos totales con operaciones
+  costoComidaInvVeg = cantidadInvitadosVeg * comidaVegetariana
+  costoComidaInvNoVeg = cantidadInvitadosNoVeg * comida
+  costoSouvenirGenMujer = cantidadGenMujer * souvenirMujer
+  costoSouvenirGenHombre = cantidadGenHombre * souvenirHombre
+  costoSouvenirGenOtros = cantidadGenOtros * souvenirOtros
+  totalCosto = costoComidaInvNoVeg + costoComidaInvVeg + costoSouvenirGenHombre + costoSouvenirGenMujer + costoSouvenirGenOtros
 
-    if (alquilaLocal) {
-        totalCosto += costoAlquiler
-    }
+  if (alquilaLocal) {
+    totalCosto += costoAlquiler
+  }
 
-    // Mostrar los resultados obtenidos
-    document.getElementById('resultados').innerHTML = "Tienes una cantidad total de : " + cantidadInvitadosTotal + ' invitado/s, de los cuales ' +
-        cantidadInvitadosVeg + ' es/son vegetariano/s <br> Del total de invitados, hay ' + cantidadGenMujer + ' que es/son mujer/es, ' + cantidadGenHombre +
-        ' que es/son hombre/s y ' + cantidadGenOtros + ' es/son de otro género.<br> El costo total de tu evento, considerando estos invitados y el alquiler del local de $' +
-        costoAlquiler + ' es de: $' + totalCosto
+  // Mostrar los resultados obtenidos
 
-    let nuevaVersionPpto = new Presupuestos();
+  document.getElementById("btn-confirmar").addEventListener("click", calculo()); // Calcular los costos según los datos ingresados
 
-    nuevaVersionPpto.cantidadInvitadosTotal = `${cantidadInvitadosTotal}`;
-    nuevaVersionPpto.cantidadInvitadosVeg = `${cantidadInvitadosVeg}`;
-    nuevaVersionPpto.cantidadInvitadosNoVeg = `${cantidadInvitadosNoVeg}`;
-    nuevaVersionPpto.cantidadGenMujer = `${cantidadGenMujer}`;
-    nuevaVersionPpto.cantidadGenHombre = `${cantidadGenHombre}`;
-    nuevaVersionPpto.cantidadGenOtros = `${cantidadGenOtros}`;
-    nuevaVersionPpto.costoAlquiler = `${costoAlquiler}`;
-    nuevaVersionPpto.totalCosto = `${totalCosto}`;
+  document.getElementById('resultados').innerHTML = "Tienes una cantidad total de : " + cantidadInvitadosTotal + ' invitado/s, de los cuales ' +
+    cantidadInvitadosVeg + ' es/son vegetariano/s <br> Del total de invitados, hay ' + cantidadGenMujer + ' que es/son mujer/es, ' + cantidadGenHombre +
+    ' que es/son hombre/s y ' + cantidadGenOtros + ' es/son de otro género.<br> El costo total de tu evento, considerando estos invitados y el alquiler del local de $' +
+    costoAlquiler + ' es de: $' + totalCosto
 
-    let JsonNuevaVersion = JSON.stringify(nuevaVersionPpto)
-    sessionStorage.setItem('VersionPresupuesto', JsonNuevaVersion)
+
+
+  let nuevaVersionPresupuesto = new Presupuestos();
+
+  nuevaVersionPresupuesto.cantidadInvitadosTotal = `${cantidadInvitadosTotal}`;
+  nuevaVersionPresupuesto.cantidadInvitadosVeg = `${cantidadInvitadosVeg}`;
+  nuevaVersionPresupuesto.cantidadInvitadosNoVeg = `${cantidadInvitadosNoVeg}`;
+  nuevaVersionPresupuesto.cantidadGenMujer = `${cantidadGenMujer}`;
+  nuevaVersionPresupuesto.cantidadGenHombre = `${cantidadGenHombre}`;
+  nuevaVersionPresupuesto.cantidadGenOtros = `${cantidadGenOtros}`;
+  nuevaVersionPresupuesto.costoAlquiler = `${costoAlquiler}`;
+  nuevaVersionPresupuesto.totalCosto = `${totalCosto}`;
+
+  let JsonNuevaVersionPresupuesto = JSON.stringify(nuevaVersionPresupuesto)
+  sessionStorage.setItem('VersionPresupuesto', JsonNuevaVersionPresupuesto)
 
 }
 
 // Versiones de presupuestos guardados:
 
 class Presupuestos {
-    static VersionPpto = 1;
-    constructor(numero, cantidadInvitadosTotal, cantidadInvitadosVeg, cantidadInvitadosNoVeg, cantidadGenMujer, cantidadGenHombre, cantidadGenOtros, costoAlquiler, totalCosto) {
-        this.numero = Presupuestos.VersionPpto++;
-        this.cantidadInvitadosTotal;
-        this.cantidadInvitadosVeg;
-        this.cantidadInvitadosNoVeg;
-        this.cantidadGenMujer;
-        this.cantidadGenHombre;
-        this.cantidadGenOtros;
-        this.costoAlquiler;
-        this.totalCosto;
-    }
+  static NumVersionPresupuesto = 1;
+  constructor(numero, cantidadInvitadosTotal, cantidadInvitadosVeg, cantidadInvitadosNoVeg, cantidadGenMujer, cantidadGenHombre, cantidadGenOtros, costoAlquiler, totalCosto) {
+    this.numero = Presupuestos.NumVersionPresupuesto++;
+    this.cantidadInvitadosTotal;
+    this.cantidadInvitadosVeg;
+    this.cantidadInvitadosNoVeg;
+    this.cantidadGenMujer;
+    this.cantidadGenHombre;
+    this.cantidadGenOtros;
+    this.costoAlquiler;
+    this.totalCosto;
+  }
 }
 
-function guardarPpto() {
-    let VersionesPpto = JSON.parse(sessionStorage.getItem('VersionesPpto'));
+function guardarPresupuesto() {
+  let VersionesPresupuesto = JSON.parse(sessionStorage.getItem('VersionesPresupuesto'));
 
-    let nuevaVersionPpto = sessionStorage.getItem('VersionPresupuesto');
+  let nuevaVersionPresupuesto = sessionStorage.getItem('VersionPresupuesto');
 
-    if (VersionesPpto === null) {
-        VersionesPpto = [];
-    }
+  if (VersionesPresupuesto === null) {
+    VersionesPresupuesto = [];
+  }
 
-    VersionesPpto.push(nuevaVersionPpto);
-    console.log(VersionesPpto)
-    sessionStorage.setItem('VersionesPpto', JSON.stringify(VersionesPpto));
+  VersionesPresupuesto.push(nuevaVersionPresupuesto);
+  console.log(VersionesPresupuesto)
+  sessionStorage.setItem('VersionesPresupuesto', JSON.stringify(VersionesPresupuesto));
 }
 
+document.getElementById("btn-guardar").addEventListener("click", guardarPresupuesto()); // Guardar las distintas versiones del presupuesto al clickear el botón correspondiente
 
-// function recuperarSessionStorage() {
-//  let VersionesSessionStorage = JSON.parse(sessionStorage.getItem('VersionesPpto'))
-//console.log(VersionesSessionStorage)
-//VersionesSessionStorage.forEach(versionString  => {
-//  let version = JSON.parse(versionString);
-//console.log(`Cantidad total de invitados: ${version['cantidadInvitadosTotal']}`);
-//console.log(`Cantidad de Invitados Veganos: ${version['cantidadInvitadosVeg']}`);
-//console.log(`Cantidad de Invitados No Veganos: ${version['cantidadInvitadosNoVeg']}`);
-//console.log(`Cantidad de invitados de Genero Femenino: ${version['cantidadGenMujer']}`);
-//console.log(`cantidad de Genero Masculino: ${version['cantidadGenHombre']}`);
-//console.log(`cantidad de otro Genero: ${version['cantidadGenOtros']}`);
-//console.log(`costo del Alquiler: ${version['costoAlquiler']}`);
-//console.log(`Total de Costo: ${version['totalCosto']}`);
-//}); 
 
-function mostrarVersionesPpto() {
-    let VersionesPpto = JSON.parse(sessionStorage.getItem('VersionesPpto'));
+function mostrarVersionesPresupuesto() {
+  let VersionesPresupuesto = JSON.parse(sessionStorage.getItem('VersionesPresupuesto'));
 
-    if (VersionesPpto === null || VersionesPpto.length === 0) {
-        // Manejar el caso en que no haya versiones disponibles
-        return;
-    }
+  if (VersionesPresupuesto === null || VersionesPresupuesto.length === 0) {
+    // Manejar el caso en que no haya versiones disponibles
+    return;
+  }
 
-    let contenedorVersiones = document.getElementById('div-versiones');
+  let contenedorVersiones = document.getElementById('div-versiones');
 
-    contenedorVersiones.innerHTML = '';
+  contenedorVersiones.innerHTML = '';
 
-    VersionesPpto.forEach((versionString, index) => {
-        let version = JSON.parse(versionString);
+  VersionesPresupuesto.forEach((versionString, index) => {
+    let version = JSON.parse(versionString);
 
-        // Crear un elemento div para esta versión
-        let versionElement = document.createElement('div');
-        versionElement.classList.add('version');
+    // Crear un elemento div para guardar las versiones
+    let versionElement = document.createElement('div');
+    versionElement.classList.add('version');
 
-        // Crear y agregar elementos HTML para mostrar los detalles de la versión
-        versionElement.innerHTML = `
-            <h3>Versión ${index + 1}</h3>
-            <p>Cantidad total de invitados: ${version['cantidadInvitadosTotal']}</p>
-            <p>Cantidad de Invitados Veganos: ${version['cantidadInvitadosVeg']}</p>
-            <p>Cantidad de Invitados No Veganos: ${version['cantidadInvitadosNoVeg']}</p>
-            <p>Cantidad de invitados de Genero Femenino: ${version['cantidadGenMujer']}</p>
-            <p>Cantidad de Genero Masculino: ${version['cantidadGenHombre']}</p>
-            <p>Cantidad de otro Genero: ${version['cantidadGenOtros']}</p>
-            <p>Costo del Alquiler: ${version['costoAlquiler']}</p>
-            <p>Total de Costo: ${version['totalCosto']}</p>
-        `;
+    // Crear y agregar elementos HTML para mostrar los detalles de la versión
+    versionElement.innerHTML = `
+        <table class="table">
+        <thead class="table-dark">
+        <tr>
+        <th colspan="2">
+          Versión ${index + 1}
+        </th>
+        <tr>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cantidad total de invitados:</td>
+            <td>${version['cantidadInvitadosTotal']}</td>
+          </tr>
+          <tr>
+            <td>Cantidad de Invitados Veganos :</td>
+            <td>${version['cantidadInvitadosVeg']}</td>
+          </tr>
+          <tr>
+            <td>Cantidad de Invitados No Veganos :</td>
+            <td>${version['cantidadInvitadosNoVeg']}</td>
+          </tr>
+          <tr>
+            <td>Cantidad de invitados de Genero Femenino :</td>
+            <td>${version['cantidadGenMujer']}</td>
+          </tr>
+          <tr>
+            <td>Cantidad de Genero Masculino :</td>
+            <td>${version['cantidadGenHombre']}</td>
+          </tr>
+          <tr>
+            <td>Cantidad de otro Genero :</td>
+            <td>${version['cantidadGenOtros']}</td>
+          </tr>
+          <tr>
+            <td>Costo del Alquiler :</td>
+            <td>${version['costoAlquiler']}</td>
+          </tr>
+          <tr>
+            <td>Total de Costo :</td>
+            <td>${version['totalCosto']}</td>
+          </tr>
+         </table>
+            `;
 
-        // Agregar la versión al contenedor
-        contenedorVersiones.appendChild(versionElement);
-    });
+    // Agregar la versión al contenedor
+    contenedorVersiones.appendChild(versionElement);
+  });
+
+  document.getElementById("btn-mostrar").addEventListener("click", mostrarVersionesPresupuesto()); // Mostrar las distintas versiones del presupuesto al clickear el botón correspondiente
+
 }
 
 
