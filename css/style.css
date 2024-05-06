@@ -74,12 +74,12 @@
 
 #div-versiones {
     margin: 2%;
-    display: flex;
-    justify-content: space-evenly;
 }
 
 .table-dark {
     --bs-table-bg: #8b709e;
 }
 
-
+table {
+    max-width: 60%;
+}

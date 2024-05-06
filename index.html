@@ -45,7 +45,7 @@
       <div class="Ingreso-datos m-4">
         <h2> Para calcular el presupuesto necesario para tu evento deberás completar algunos datos. <br> Por favor
           rellena el siguiente formulario</h2>
-        <form id="form-calculadora" onsubmit="calculo()">
+        <form id="form-calculadora">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputName">Ingresa tu nombre</label>
@@ -61,27 +61,32 @@
                 placeholder="Fecha del evento en formato dd/mm/yyyy">
             </div>
             <div class="form-group">
-              <label for="inputVeg">Indica la Cantidad de invitados vegetarianos. El costo en comida para un invitado vegetariano es $ 520. </label>
+              <label for="inputVeg">Indica la Cantidad de invitados vegetarianos. El costo en comida para un invitado
+                vegetariano es $ 520. </label>
               <input type="text" class="form-control" id="cantidadInvitadosVeg"
                 placeholder="Cantidad de invitados que son vegetarianos" value="0">
             </div>
             <div class="form-group">
-              <label for="inputNoVeg">Indica la Cantidad de invitados NO vegetarianos. El costo en comida para un invitado No vegetariano es de $ 470.</label>
+              <label for="inputNoVeg">Indica la Cantidad de invitados NO vegetarianos. El costo en comida para un
+                invitado No vegetariano es de $ 470.</label>
               <input type="text" class="form-control" id="cantidadInvitadosNoVeg"
                 placeholder="Cantidad de invitados que NO son vegetarianos" value="0">
             </div>
             <div class="form-group">
-              <label for="inputFem">Indica la Cantidad de invitados de género femenino. Por cada invitado femenino se calcula un souvenir con un costo de $ 150.</label>
+              <label for="inputFem">Indica la Cantidad de invitados de género femenino. Por cada invitado femenino se
+                calcula un souvenir con un costo de $ 150.</label>
               <input type="text" class="form-control" id="cantidadGenMujer"
                 placeholder="Cantidad de invitados de género femenino" value="0">
             </div>
             <div class="form-group">
-              <label for="inputMasc">Indica la Cantidad de invitados de género masculino.  Por cada invitado masculino se calcula un souvenir con un costo de $ 120.</label>
+              <label for="inputMasc">Indica la Cantidad de invitados de género masculino. Por cada invitado masculino se
+                calcula un souvenir con un costo de $ 120.</label>
               <input type="text" class="form-control" id="cantidadGenHombre"
                 placeholder="Cantidad de invitados de género masculino" value="0">
             </div>
             <div class="form-group">
-              <label for="inputOtro">Indica la Cantidad de invitados de otro género. El costo en souvenirs para este caso es de $ 125.</label>
+              <label for="inputOtro">Indica la Cantidad de invitados de otro género. El costo en souvenirs por cada
+                invitado en este caso es de $ 125.</label>
               <input type="text" class="form-control" id="cantidadGenOtros"
                 placeholder="Cantidad de invitados de otro género" value="0">
             </div>
@@ -93,15 +98,15 @@
                 </label>
               </div>
             </div>
-            <button type="submit" class="btn-confirmar btn btn-primary">Confirmar</button>
-            <button onclick="guardarPresupuesto()" class="btn-guardar btn btn-primary">Guardar Presupuesto</button>
+            <button type="submit" id="btn-confirmar" class="btn btn-primary">Confirmar</button>
+            <button id="btn-guardar" class="btn btn-primary">Guardar Presupuesto</button>
         </form>
       </div>
       <div id="resultados">
       </div>
     </section>
     <section id="Presupuestos-guardados">
-      <button onclick="mostrarVersionesPresupuesto()" class="btn-mostrar btn btn-primary">Ver presupuestos guardados</button>
+      <button id="btn-mostrar" class="btn btn-primary">Ver presupuestos guardados</button>
       <div id="div-versiones">
       </div>
     </section>

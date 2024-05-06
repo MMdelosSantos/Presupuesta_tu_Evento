@@ -1,8 +1,13 @@
 
+document.getElementById("btn-confirmar").addEventListener("click", calculo); // Botón Calcular los costos según los datos ingresados
+document.getElementById("btn-mostrar").addEventListener("click", mostrarVersionesPresupuesto); // Mostrar las distintas versiones del presupuesto al clickear el botón correspondiente
+document.getElementById("btn-guardar").addEventListener("click", guardarPresupuesto); // Guardar las distintas versiones del presupuesto al clickear el botón correspondiente
+
 function calculo() {   // Declaro variables principales
   let nombreOrganizador = (document.getElementById('nombreOrganizador').value);
   let mailOrganizador = (document.getElementById('mailOrganizador').value);
   let fechaEvento = (document.getElementById('fechaEvento').value);
+
   // Sobre invitados
   let cantidadInvitadosVeg = parseInt(document.getElementById('cantidadInvitadosVeg').value);
   let cantidadInvitadosNoVeg = parseInt(document.getElementById('cantidadInvitadosNoVeg').value);
@@ -12,6 +17,7 @@ function calculo() {   // Declaro variables principales
   let fechaActual = new Date()
   let alquilaLocal = document.getElementById('alquilalocal').checked
   let cantidadInvitadosTotal
+
   // Sobre costos
   let souvenirMujer // Costo unitario de los souvenirs para mujer
   let souvenirHombre // Costo unitario de los souvenirs para hombre
@@ -35,6 +41,7 @@ function calculo() {   // Declaro variables principales
   souvenirOtros = 125
   comidaVegetariana = 520
   comida = 470
+
   // Calculamos costos totales con operaciones
   costoComidaInvVeg = cantidadInvitadosVeg * comidaVegetariana
   costoComidaInvNoVeg = cantidadInvitadosNoVeg * comida
@@ -48,15 +55,10 @@ function calculo() {   // Declaro variables principales
   }
 
   // Mostrar los resultados obtenidos
-
-  document.getElementById("btn-confirmar").addEventListener("click", calculo()); // Calcular los costos según los datos ingresados
-
   document.getElementById('resultados').innerHTML = "Tienes una cantidad total de : " + cantidadInvitadosTotal + ' invitado/s, de los cuales ' +
     cantidadInvitadosVeg + ' es/son vegetariano/s <br> Del total de invitados, hay ' + cantidadGenMujer + ' que es/son mujer/es, ' + cantidadGenHombre +
     ' que es/son hombre/s y ' + cantidadGenOtros + ' es/son de otro género.<br> El costo total de tu evento, considerando estos invitados y el alquiler del local de $' +
     costoAlquiler + ' es de: $' + totalCosto
-
-
 
   let nuevaVersionPresupuesto = new Presupuestos();
 
@@ -73,7 +75,6 @@ function calculo() {   // Declaro variables principales
   sessionStorage.setItem('VersionPresupuesto', JsonNuevaVersionPresupuesto)
 
 }
-
 // Versiones de presupuestos guardados:
 
 class Presupuestos {
@@ -104,9 +105,6 @@ function guardarPresupuesto() {
   console.log(VersionesPresupuesto)
   sessionStorage.setItem('VersionesPresupuesto', JSON.stringify(VersionesPresupuesto));
 }
-
-document.getElementById("btn-guardar").addEventListener("click", guardarPresupuesto()); // Guardar las distintas versiones del presupuesto al clickear el botón correspondiente
-
 
 function mostrarVersionesPresupuesto() {
   let VersionesPresupuesto = JSON.parse(sessionStorage.getItem('VersionesPresupuesto'));
@@ -180,10 +178,6 @@ function mostrarVersionesPresupuesto() {
     // Agregar la versión al contenedor
     contenedorVersiones.appendChild(versionElement);
   });
-
-  document.getElementById("btn-mostrar").addEventListener("click", mostrarVersionesPresupuesto()); // Mostrar las distintas versiones del presupuesto al clickear el botón correspondiente
-
 }
-
 
 
